@@ -1,0 +1,96 @@
+# ===== LEVEL 3 : Cipher Vault =====
+[Level]
+name=Cipher Vault
+time=180
+background=assets/images/level3/bg.png
+
+[Object]
+id=poster
+name=Heist Poster
+x=90
+y=100
+w=200
+h=280
+description=A faded newspaper poster:\n"THE GREAT VAULT HEIST OF 1984 - STILL UNSOLVED."
+
+[Object]
+id=statue
+name=Stone Statue
+x=330
+y=260
+w=150
+h=250
+description=A stone statue holds a plaque with a riddle. A small slot in its base holds something.
+puzzle=riddle
+question=What gets wetter the more it dries?
+answer=towel
+reward_id=fuse
+reward_name=Fuse
+reward_image=assets/images/items/fuse.png
+
+[Object]
+id=terminal
+name=Security Terminal
+x=560
+y=300
+w=230
+h=180
+description=A security terminal asks for the year of a famous crime.
+puzzle=code
+question=Enter the 4-digit year.
+answer=1984
+unlocks=fusebox
+
+[Object]
+id=fusebox
+name=Fuse Box
+x=640
+y=120
+w=140
+h=140
+image=assets/images/level3/fusebox.png
+hidden=true
+description=A fuse box appeared behind a wall panel. One fuse slot is empty.
+puzzle=itemuse
+question=Which item fits in the empty slot?
+answer=fuse
+unlocks=vault_wheel
+
+[Object]
+id=tiles
+name=Scratched Tiles
+x=800
+y=520
+w=220
+h=80
+description=Scratches on the floor tiles show colours in order:\nBlue, Blue, Red, Yellow.
+
+[Object]
+id=vault_wheel
+name=Vault Wheel
+x=880
+y=140
+w=200
+h=200
+locked=true
+locked_message=The wheel is dead. It needs electric power first.
+description=A heavy vault wheel with four coloured buttons.
+puzzle=sequence
+question=Enter the colour sequence.
+answer=BBRY
+reward_id=vault_key
+reward_name=Vault Key
+reward_image=assets/images/items/vault_key.png
+
+[Object]
+id=door
+name=Vault Door
+x=1040
+y=360
+w=200
+h=240
+exit=true
+description=The final vault door. A massive lock sits in the middle.
+puzzle=itemuse
+question=Use the final key.
+answer=vault_key

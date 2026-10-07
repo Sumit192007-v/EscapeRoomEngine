@@ -1,0 +1,5 @@
+# One level file per line, played in this order.
+# To add a level: create levels/levelN.txt and add its path here. No C++ changes needed.
+levels/level1.txt
+levels/level2.txt
+levels/level3.txt

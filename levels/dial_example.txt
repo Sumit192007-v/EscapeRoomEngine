@@ -1,0 +1,16 @@
+# Paste this [Object] into any level file to use the new puzzle:
+[Object]
+id=dial_safe
+name=Dial Safe
+x=600
+y=300
+w=120
+h=120
+image=assets/images/level1/safe.png
+description=A safe with three rotating dials.
+puzzle=dial
+question=Set the three dials. (The clock stopped at 3:07 -> hint: 307)
+answer=307
+reward_id=gold_key
+reward_name=Gold Key
+reward_image=assets/images/items/key.png

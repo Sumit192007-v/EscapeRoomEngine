@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{6F2A1D3E-4B7C-4E5A-9C11-2D8E7A5B9F01}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>EscapeRoomEngine</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup>
+    <!-- Where the SDL2 "VC" development packages are extracted. Change these 3 lines if you keep SDL elsewhere. -->
+    <SDL2_DIR>$(ProjectDir)third_party\SDL2\</SDL2_DIR>
+    <SDL2_IMAGE_DIR>$(ProjectDir)third_party\SDL2_image\</SDL2_IMAGE_DIR>
+    <SDL2_TTF_DIR>$(ProjectDir)third_party\SDL2_ttf\</SDL2_TTF_DIR>
+    <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)obj\$(Configuration)\</IntDir>
+    <LocalDebuggerWorkingDirectory>$(ProjectDir)</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(SDL2_DIR)include;$(SDL2_IMAGE_DIR)include;$(SDL2_TTF_DIR)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SDL2_DIR)lib\x64;$(SDL2_IMAGE_DIR)lib\x64;$(SDL2_TTF_DIR)lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /D "$(SDL2_DIR)lib\x64\*.dll" "$(OutDir)" &gt;nul
+xcopy /Y /D "$(SDL2_IMAGE_DIR)lib\x64\*.dll" "$(OutDir)" &gt;nul
+xcopy /Y /D "$(SDL2_TTF_DIR)lib\x64\*.dll" "$(OutDir)" &gt;nul
+exit /b 0</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\DialLockPuzzle.cpp" />
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\GameObject.cpp" />
+    <ClCompile Include="src\Inventory.cpp" />
+    <ClCompile Include="src\LevelLoader.cpp" />
+    <ClCompile Include="src\MenuState.cpp" />
+    <ClCompile Include="src\PlayState.cpp" />
+    <ClCompile Include="src\Puzzle.cpp" />
+    <ClCompile Include="src\PuzzleFactory.cpp" />
+    <ClCompile Include="src\Puzzles.cpp" />
+    <ClCompile Include="src\ResultState.cpp" />
+    <ClCompile Include="src\Room.cpp" />
+    <ClCompile Include="src\SaveManager.cpp" />
+    <ClCompile Include="src\TextRenderer.cpp" />
+    <ClCompile Include="src\TextureManager.cpp" />
+    <ClCompile Include="src\UI.cpp" />
+    <ClCompile Include="src\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Config.h" />
+    <ClInclude Include="include\Context.h" />
+    <ClInclude Include="include\DialLockPuzzle.h" />
+    <ClInclude Include="include\Exceptions.h" />
+    <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\GameObject.h" />
+    <ClInclude Include="include\GameState.h" />
+    <ClInclude Include="include\Inventory.h" />
+    <ClInclude Include="include\Item.h" />
+    <ClInclude Include="include\LevelLoader.h" />
+    <ClInclude Include="include\MenuState.h" />
+    <ClInclude Include="include\Observer.h" />
+    <ClInclude Include="include\PlayState.h" />
+    <ClInclude Include="include\Puzzle.h" />
+    <ClInclude Include="include\PuzzleFactory.h" />
+    <ClInclude Include="include\Puzzles.h" />
+    <ClInclude Include="include\ResultState.h" />
+    <ClInclude Include="include\Room.h" />
+    <ClInclude Include="include\SDLWrappers.h" />
+    <ClInclude Include="include\SaveManager.h" />
+    <ClInclude Include="include\TextRenderer.h" />
+    <ClInclude Include="include\TextureManager.h" />
+    <ClInclude Include="include\UI.h" />
+    <ClInclude Include="include\Utils.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

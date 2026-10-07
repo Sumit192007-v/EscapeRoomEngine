@@ -1,0 +1,81 @@
+# ===== LEVEL 2 : Haunted Library =====
+[Level]
+name=Haunted Library
+time=240
+background=assets/images/level2/bg.png
+
+[Object]
+id=portrait
+name=Old Portrait
+x=160
+y=150
+w=150
+h=260
+description=A portrait of the old librarian. A note under the frame reads:\n"Light the candles in the colours of the rainbow, but skip orange: Red, Yellow, Green, Blue."
+
+[Object]
+id=globe
+name=Dusty Globe
+x=250
+y=510
+w=110
+h=210
+description=A dusty globe. All the oceans have been painted black.
+
+[Object]
+id=lectern
+name=Lectern
+x=480
+y=520
+w=250
+h=130
+description=An open book written in a strange cipher lies on the lectern.
+puzzle=cipher
+question=The page reads: HVFDSH\nEvery letter was shifted forward by 3 (A became D). What is the original word?
+answer=escape
+unlocks=cabinet
+
+[Object]
+id=candles
+name=Four Candles
+x=810
+y=385
+w=135
+h=90
+description=Four candles stand in a row. A tiny number is carved at the base of each one:\nRed = 1, Green = 2, Blue = 3, Yellow = 4.
+puzzle=dial
+question=Turn the four dials to the candle numbers, in the order the portrait's note gives.
+answer=1423
+reward_id=silver_key
+reward_name=Silver Key
+reward_image=assets/images/items/silver_key.png
+
+[Object]
+id=cabinet
+name=Sealed Cabinet
+x=1050
+y=70
+w=230
+h=650
+locked=true
+locked_message=The cabinet is sealed shut by a strange magic. Maybe that cipher on the lectern can break the spell.
+description=The seal is broken. The cabinet has a silver lock.
+puzzle=itemuse
+question=Which item opens the silver lock?
+answer=silver_key
+reward_id=iron_key
+reward_name=Iron Key
+reward_image=assets/images/items/iron_key.png
+
+[Object]
+id=door
+name=Library Door
+x=490
+y=300
+w=190
+h=220
+exit=true
+description=The big oak door out of the library. It has an old iron lock.
+puzzle=itemuse
+question=Use the right key on the door.
+answer=iron_key

@@ -1,0 +1,37 @@
+You are a senior C++17 game developer and patient teacher. I am a 2nd-year CS student. I have an EXISTING, WORKING project called "Escape Room Engine": a 2D point-and-click escape room built with C++17, SDL2, SDL2_image 2.8.x and SDL2_ttf in Visual Studio 2022 Community (x64, Windows). It is my OOP course project. Core idea: "The game is just a demo. The engine is the project."
+
+I will paste or upload the project files. Read them first and continue from THIS code. Do NOT rewrite the project from scratch, do NOT rename existing classes/files, and do NOT change the folder structure unless I ask.
+
+## Current architecture (keep it)
+- include/*.h and src/*.cpp, entry point src/main.cpp
+- Game (main loop, owns window/renderer/TextureManager/TextRenderer, switches GameStates)
+- GameState (abstract) -> MenuState, PlayState, ResultState (State pattern)
+- Room (subject, Observer pattern) has-a many GameObject; GameObject has-a optional Puzzle and optional reward Item
+- Puzzle (abstract) -> RiddlePuzzle, CodeLockPuzzle, SequencePuzzle, ItemUsePuzzle; created by PuzzleFactory (Factory pattern)
+- LevelLoader reads levels/*.txt (data-driven; levels/level_list.txt lists them) and builds Rooms
+- SaveManager (save/load file), Inventory, TextureManager (cache; missing PNG -> coloured placeholder), TextRenderer, UI helpers
+- RAII wrappers for SDL objects (SDLWrappers.h), custom exceptions (Exceptions.h)
+- Logical resolution 1280x720; inventory bar covers y>=620; inspect panel is cfg::kInspectPanel
+
+## Rules for every answer
+1. Keep the OOP design: inheritance, polymorphism, abstraction, encapsulation, composition, smart pointers (no raw owning pointers, no new/delete), exceptions for errors, file handling for data.
+2. New content must stay DATA-DRIVEN where possible (level text files, not hardcoded in C++).
+3. When you change or add code, give me:
+   a) a short list of EXACT file names you changed/added,
+   b) the COMPLETE new content of every changed file (never "rest of code here", never partial snippets),
+   c) any new image/asset file names with recommended pixel sizes,
+   d) any Visual Studio step I must do (e.g. add new .cpp/.h files to the project: Solution Explorer -> right-click -> Add -> Existing Item),
+   e) how to test the change in the game.
+4. Code must compile in Visual Studio 2022 (MSVC, /std:c++17) with SDL2 + SDL2_image + SDL2_ttf, no extra libraries. Explain simply, with comments, for a beginner.
+5. If my request is unclear or could break existing code, ask ONE short question first. If something in my code looks like a bug, tell me before changing it.
+6. Work in small steps: do ONE feature per answer, then wait for me to say "next".
+
+## What I want to add (do these one at a time, in this order, starting with step 1)
+1. Replace the placeholder pictures workflow: tell me exact image names/sizes, and add smooth fade-in/out screen transitions between states.
+2. Add sound: background music + click/solve/fail/unlock sound effects using SDL2_mixer (explain how to install it and add it to the .vcxproj, keep an AudioManager class, missing audio files must not crash).
+3. Add a hint system: a Hint button in the inspect panel that costs score points, with hint text coming from the level file (key: hint=...).
+4. Add a 5th puzzle type "slider/pattern" or "wire connection" as a new Puzzle subclass + factory entry + level file example.
+5. Add an in-game Room Editor / Admin mode (menu item) that lets the user create a new room (name, objects, puzzles with type/question/answer, items) and saves it as a level .txt file plus an entry in level_list.txt, without touching C++ code.
+6. Polish: pause menu, settings (volume), and a score screen.
+
+Start with step 1 now. First confirm in 3-5 lines that you understood the architecture, then give the files.

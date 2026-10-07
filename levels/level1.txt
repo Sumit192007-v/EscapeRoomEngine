@@ -1,0 +1,80 @@
+# ===== LEVEL 1 : Study Room =====
+# Format: [Section] then key=value lines. Lines starting with # are comments.
+# puzzle types: riddle | cipher | code | sequence | itemuse | dial
+# sequence answers use the letters R G B Y (e.g. RYGB). itemuse answer = item id.
+# Use \n inside text for a line break.
+
+[Level]
+name=Study Room
+time=300
+background=assets/images/level1/bg.png
+
+[Object]
+id=bookshelf
+name=Bookshelf
+x=30
+y=60
+w=430
+h=560
+description=A tall bookshelf crammed with dusty books. One book feels loose, as if something is hidden behind the shelf.
+puzzle=riddle
+question=A paper slip reads: "I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?"
+answer=echo
+unlocks=safe
+
+[Object]
+id=clock
+name=Wall Clock
+x=700
+y=140
+w=160
+h=160
+description=An old wall clock. It stopped long ago. The hands are frozen at 3:47.
+
+[Object]
+id=desk
+name=Messy Desk
+x=510
+y=430
+w=480
+h=190
+description=Papers everywhere. A sticky note says: "The safe code is the time on the wall clock - no colon!"
+
+[Object]
+id=plant
+name=Potted Plant
+x=990
+y=490
+w=110
+h=130
+description=A dusty plant. Nothing useful here.
+
+[Object]
+id=safe
+name=Wall Safe
+x=150
+y=260
+w=110
+h=110
+image=assets/images/level1/safe.png
+hidden=true
+description=A small wall safe with four rotating dials.
+puzzle=dial
+question=Turn the dials to the right combination. The sticky note on the desk and the wall clock may help.
+answer=0347
+reward_id=brass_key
+reward_name=Brass Key
+reward_image=assets/images/items/brass_key.png
+
+[Object]
+id=door
+name=Exit Door
+x=1130
+y=150
+w=150
+h=470
+exit=true
+description=The heavy exit door. The lock needs a key.
+puzzle=itemuse
+question=Select the correct item in your inventory, then press the button.
+answer=brass_key
